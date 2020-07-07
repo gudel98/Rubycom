@@ -2,18 +2,18 @@
 
 Бесплатный образовательный курс для начинающих по Ruby
 
-### Homework #0
+### Homework #01
 
 Ruby Koans
 
-### Homework #1
+### Homework #02
 
 Parsing
 
-### Homework #2
+### Homework #03
 
 pending...
 
-### Homework #3
+### Team Homework #04
 
 pending...
