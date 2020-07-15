@@ -19,7 +19,7 @@ Parsing
 
 ### Homework #03
 
-pending...
+Gems
 
 ### Team Homework #04
 
