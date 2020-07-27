@@ -30,14 +30,17 @@ ruby `ls about_*`
 	puts converter.to_rub
 
 	# Допустимы другие варианты реализации, к примеру:
-	Converter.convert('1.00', 'USD', 'EUR') # amount, currency_from, currency_to
+	puts Converter.convert('1.00', 'USD', 'EUR') # amount, currency_from, currency_to
+	# => Пример вывода: '$1 = €0.87 (<здесь информация про конвертируемые валюты>)'
 ```
 9. Предусмотреть и обработать ошибочные ситуации с пустыми параметрами, с нулевыми суммами, с несуществующими валютами и т.д. (к примеру: выводить сообщения об ошибках)
 10. Использовать Rubocop для проверки код-стайла (базовую конфигурацию или, к примеру, https://github.com/rubocop-hq/rubocop)
+11. Покрыть гем `converter` тестами с помощью `rspec`
+12. Покрыть проект `main` тестовыми сценариями с помощью `cucumber`
 
 ### Homework #03
 
-Gems
+pending...
 
 ### Team Homework #04
 
