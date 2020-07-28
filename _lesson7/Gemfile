@@ -1,0 +1,8 @@
+source 'https://rubygems.org' do
+  gem 'rspec'
+  gem 'cucumber'
+  gem 'pry'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'geckodriver-helper'
+end
