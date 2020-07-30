@@ -1,124 +1,8 @@
-module DataUtils
-  require 'open-uri'
-  require 'json'
-  require 'csv'
+require_relative "./data_utils"
+require_relative "./data_provider"
 
-  def get_raw_json(source =
-    'https://www.nbrb.by/api/exrates/rates?periodicity=0')
-
-    json = URI.open(source).read
-    JSON.parse(json)
-  end
-
-
-  def hash_to_json_file(hash, path)
-    File.open("#{path}/data.json","w") { |f| f.write(hash.to_json) }
-  end
-
-
-  def raw_json_to_csv_file(raw_json, path)
-    CSV.open("#{path}/data.csv", 'wb') do |csv|
-      csv << ['Cur_Abbreviation', 'Cur_Scale', 'Cur_Name', 'Cur_OfficialRate']
-      raw_json.each do |elem|
-        csv << [
-          elem['Cur_Abbreviation'],
-          elem['Cur_Scale'],
-          elem['Cur_Name'],
-          elem['Cur_OfficialRate']]
-      end
-    end
-  end
-end
-
-class AbstractData
-  def self.get_data(source)
-    raise NotImplementedError,
-      "Class has not implemented method '#{__method__}'"
-  end
-
-  def self.error_handler(error)
-    p error.message
-    return nil
-  end
-end
-
-
-class JsonData < AbstractData
-  def self.get_data(source)
-    begin
-      require 'json'
-      json = File.read(source)
-      JSON.parse(json)
-    rescue Exception => error
-      error_handler(error)
-    end
-  end
-end
-
-
-class CsvData < AbstractData
-  def self.get_data(source)
-    begin
-      require 'csv'
-      table = CSV.parse(File.read(source), headers: true)
-      result = {}
-      table.each do |i|
-        result[i.field('Cur_Abbreviation')] = Hash[
-          'Cur_Scale' => i.field('Cur_Scale').to_i,
-          'Cur_Name' => i.field('Cur_Name'),
-          'Cur_OfficialRate' => i.field('Cur_OfficialRate').to_f,
-        ]
-      end
-      result
-    rescue Exception => error
-      error_handler(error)
-    end
-  end
-end
-
-
-class WebData < AbstractData
-  extend DataUtils
-
-  def self.get_data(source =
-      'https://www.nbrb.by/api/exrates/rates?periodicity=0')
-    begin
-      #p caller[0][/[^:]+/]
-      result = {}
-      get_raw_json(source).each do |i|
-        result[ i['Cur_Abbreviation'] ] = {
-          'Cur_Scale' => i['Cur_Scale'],
-          'Cur_Name' => i['Cur_Name'],
-          'Cur_OfficialRate' => i['Cur_OfficialRate'],
-        }
-      end
-      result
-    rescue Exception => error
-      error_handler(error)
-    end
-  end
-end
-
-
-class DataFactory
-  def self.for(type)
-    result = nil
-    begin
-      raise ArgumentError, "Parameter 'type' must be a string" if type.class != String
-
-      result = Object.const_get(type.capitalize + 'Data')
-
-    rescue NameError => error
-      p "Invalid parameter 'type' value. Available values: 'csv', 'json', 'web'" \
-        " (case insensitive)."
-    rescue => error
-      p error.message
-    ensure
-      return result
-    end
-  end
-end
-
+require 'money'
+require 'i18n'
 
 class Converter
 
@@ -164,10 +48,8 @@ class Converter
 
 
   def convert(amount, currency_from, currency_to)
-    require 'money'
-    require 'i18n'
-
     return unless convert_validator?(amount, currency_from, currency_to)
+
     begin
       cur_from = currency_from.upcase
       cur_to = currency_to.upcase
@@ -195,8 +77,6 @@ class Converter
       Money.rounding_mode = BigDecimal::ROUND_HALF_UP
 
       "#{ Money.new(amount, cur_from).format } => #{ Money.new(result, cur_to).format }"
-      #"#{ Money.from_amount(amount, cur_from).format } => " \
-      #  "#{ Money.from_amount(result, cur_to).format }"
     rescue Exception => error
       p error.message
     end

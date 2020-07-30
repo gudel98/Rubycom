@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "A simple money converter gem"
   s.authors = ["Ivan"]
   s.email = 'ask.vankov@gmail.com'
-  s.files = ["lib/converter.rb"]
+  s.files = ["lib/converter.rb", "lib/data_utils.rb", "lib/data_provider.rb"]
   s.homepage = 'https://rubygems.org'
   s.license = 'MIT'
 end
