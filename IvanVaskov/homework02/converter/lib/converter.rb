@@ -6,8 +6,12 @@ require 'i18n'
 
 class Converter
 
-  def initialize(data)
+  def initialize(data, current_locale=:en)
     @data = data
+    I18n.config.available_locales = current_locale
+    I18n.locale = current_locale
+    Money.locale_backend = :i18n
+    Money.rounding_mode = BigDecimal::ROUND_HALF_UP
   end
 
 
@@ -72,13 +76,20 @@ class Converter
 
       result = amount * (rate_from * scale_to) / (rate_to * scale_from)
 
-      I18n.config.available_locales = :en
-      Money.locale_backend = :i18n
-      Money.rounding_mode = BigDecimal::ROUND_HALF_UP
-
-      "#{ Money.new(amount, cur_from).format } => #{ Money.new(result, cur_to).format }"
+      money_from = Money.new(amount, cur_from)
+      money_to = Money.new(result, cur_to)
+      p format_convert(money_from, money_to)
+      [money_from, money_to]
     rescue Exception => error
       p error.message
     end
   end
+
+  private
+
+  def format_convert(money_from, money_to)
+    "#{ money_from.format } => #{ money_to.format } :" \
+      "(#{money_from.currency.name} => #{money_to.currency.name})"
+  end
+
 end

@@ -16,6 +16,6 @@ SOURCE_TYPES.each do |i|
   data_clazz = DataFactory.for(i)
   source = (i == 'web') ? web_source: "#{path}/data.#{i}"
   con = Converter.new(data_clazz.get_data(source))
-  p con.convert(120, 'byn', 'EuR')
-  p con.convert(10, 'EuR', 'uSd')
+  con.convert(120_00, 'byn', 'EuR')
+  con.convert(10, 'EuR', 'uSd')
 end
