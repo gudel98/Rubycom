@@ -1,0 +1,5 @@
+source 'https://rubygems.org' do 
+  gem 'converter', path: '../converter'
+  gem 'money'
+  gem 'colorize' 
+end
