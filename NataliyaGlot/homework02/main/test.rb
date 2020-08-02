@@ -1,3 +1,5 @@
+require 'converter'
+require 'pry'
 
 converter = Converter.new('1.00', 'USD')
 	puts converter.to_eur # => Пример вывода: '$1 = €0.87 (<здесь информация про конвертируемые валюты>)'
