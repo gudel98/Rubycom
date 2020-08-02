@@ -1,14 +1,13 @@
 require 'money'
 require 'json'
 require 'colorize'
-require 'pry'
 class Converter
   
     attr_accessor :num_conv, :cur_name
 
     def initialize(num_conv, cur_name)
       file = File.read('converter.json')
-      @file_hash = JSON.parse(file)
+      @file_hash = JSON.parse(file) # use absolute path
       @num_conv = num_conv
       @cur_name = cur_name
     end
@@ -16,7 +15,7 @@ class Converter
     def to_eur
       @cur_scale = @file_hash["currency"][0]["cur_scale"]
       @cur_rate = @file_hash["currency"][0]["cur_rate"]
-      (@num_conv * @cur_scale / @cur_rate).round(2)
+      (@num_conv * @cur_scale / @cur_rate).round(2) # must be integer
     end
 
     def to_usd
@@ -84,10 +83,3 @@ class Converter
         end
     end
 end
-
-
-#puts Converter.convert(100, 'USD', 'EUR')
-converter = Converter.new(100,"EUR")
-binding.pry 
-
-
