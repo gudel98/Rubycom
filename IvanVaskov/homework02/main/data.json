@@ -1,1 +1,132 @@
-{"AUD":{"Cur_Scale":1,"Cur_Name":"Австралийский доллар","Cur_OfficialRate":1.7531},"BGN":{"Cur_Scale":1,"Cur_Name":"Болгарский лев","Cur_OfficialRate":1.4778},"UAH":{"Cur_Scale":100,"Cur_Name":"Гривен","Cur_OfficialRate":8.7965},"DKK":{"Cur_Scale":10,"Cur_Name":"Датских крон","Cur_OfficialRate":3.8826},"USD":{"Cur_Scale":1,"Cur_Name":"Доллар США","Cur_OfficialRate":2.4375},"EUR":{"Cur_Scale":1,"Cur_Name":"Евро","Cur_OfficialRate":2.899},"PLN":{"Cur_Scale":10,"Cur_Name":"Злотых","Cur_OfficialRate":6.5615},"IRR":{"Cur_Scale":100000,"Cur_Name":"Иранских риалов","Cur_OfficialRate":5.8036},"ISK":{"Cur_Scale":100,"Cur_Name":"Исландских крон","Cur_OfficialRate":1.8108},"JPY":{"Cur_Scale":100,"Cur_Name":"Йен","Cur_OfficialRate":2.3291},"CAD":{"Cur_Scale":1,"Cur_Name":"Канадский доллар","Cur_OfficialRate":1.8158},"CNY":{"Cur_Scale":10,"Cur_Name":"Китайских юаней","Cur_OfficialRate":3.4959},"KWD":{"Cur_Scale":1,"Cur_Name":"Кувейтский динар","Cur_OfficialRate":7.9798},"MDL":{"Cur_Scale":10,"Cur_Name":"Молдавских леев","Cur_OfficialRate":1.467},"NZD":{"Cur_Scale":1,"Cur_Name":"Новозеландский доллар","Cur_OfficialRate":1.6292},"NOK":{"Cur_Scale":10,"Cur_Name":"Норвежских крон","Cur_OfficialRate":2.6867},"RUB":{"Cur_Scale":100,"Cur_Name":"Российских рублей","Cur_OfficialRate":3.3156},"XDR":{"Cur_Scale":1,"Cur_Name":"СДР (Специальные права заимствования)","Cur_OfficialRate":3.4297},"SGD":{"Cur_Scale":1,"Cur_Name":"Сингапурcкий доллар","Cur_OfficialRate":1.7767},"KGS":{"Cur_Scale":100,"Cur_Name":"Сомов","Cur_OfficialRate":3.1746},"KZT":{"Cur_Scale":1000,"Cur_Name":"Тенге","Cur_OfficialRate":5.7791},"TRY":{"Cur_Scale":10,"Cur_Name":"Турецких лир","Cur_OfficialRate":3.4937},"GBP":{"Cur_Scale":1,"Cur_Name":"Фунт стерлингов","Cur_OfficialRate":3.2019},"CZK":{"Cur_Scale":100,"Cur_Name":"Чешских крон","Cur_OfficialRate":11.0452},"SEK":{"Cur_Scale":10,"Cur_Name":"Шведских крон","Cur_OfficialRate":2.8084},"CHF":{"Cur_Scale":1,"Cur_Name":"Швейцарский франк","Cur_OfficialRate":2.6854}}
+{
+  "AUD": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Австралийский доллар",
+    "Cur_OfficialRate": 1.7588
+  },
+  "BGN": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Болгарский лев",
+    "Cur_OfficialRate": 1.4773
+  },
+  "UAH": {
+    "Cur_Scale": 100,
+    "Cur_Name": "Гривен",
+    "Cur_OfficialRate": 8.8078
+  },
+  "DKK": {
+    "Cur_Scale": 10,
+    "Cur_Name": "Датских крон",
+    "Cur_OfficialRate": 3.8785
+  },
+  "USD": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Доллар США",
+    "Cur_OfficialRate": 2.4368
+  },
+  "EUR": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Евро",
+    "Cur_OfficialRate": 2.8821
+  },
+  "PLN": {
+    "Cur_Scale": 10,
+    "Cur_Name": "Злотых",
+    "Cur_OfficialRate": 6.5736
+  },
+  "IRR": {
+    "Cur_Scale": 100000,
+    "Cur_Name": "Иранских риалов",
+    "Cur_OfficialRate": 5.8019
+  },
+  "ISK": {
+    "Cur_Scale": 100,
+    "Cur_Name": "Исландских крон",
+    "Cur_OfficialRate": 1.806
+  },
+  "JPY": {
+    "Cur_Scale": 100,
+    "Cur_Name": "Йен",
+    "Cur_OfficialRate": 2.3053
+  },
+  "CAD": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Канадский доллар",
+    "Cur_OfficialRate": 1.839
+  },
+  "CNY": {
+    "Cur_Scale": 10,
+    "Cur_Name": "Китайских юаней",
+    "Cur_OfficialRate": 3.5104
+  },
+  "KWD": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Кувейтский динар",
+    "Cur_OfficialRate": 7.9728
+  },
+  "MDL": {
+    "Cur_Scale": 10,
+    "Cur_Name": "Молдавских леев",
+    "Cur_OfficialRate": 1.468
+  },
+  "NZD": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Новозеландский доллар",
+    "Cur_OfficialRate": 1.6241
+  },
+  "NOK": {
+    "Cur_Scale": 10,
+    "Cur_Name": "Норвежских крон",
+    "Cur_OfficialRate": 2.7022
+  },
+  "RUB": {
+    "Cur_Scale": 100,
+    "Cur_Name": "Российских рублей",
+    "Cur_OfficialRate": 3.3288
+  },
+  "XDR": {
+    "Cur_Scale": 1,
+    "Cur_Name": "СДР (Специальные права заимствования)",
+    "Cur_OfficialRate": 3.4295
+  },
+  "SGD": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Сингапурcкий доллар",
+    "Cur_OfficialRate": 1.7795
+  },
+  "KGS": {
+    "Cur_Scale": 100,
+    "Cur_Name": "Сомов",
+    "Cur_OfficialRate": 3.1705
+  },
+  "KZT": {
+    "Cur_Scale": 1000,
+    "Cur_Name": "Тенге",
+    "Cur_OfficialRate": 5.8202
+  },
+  "TRY": {
+    "Cur_Scale": 10,
+    "Cur_Name": "Турецких лир",
+    "Cur_OfficialRate": 3.4771
+  },
+  "GBP": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Фунт стерлингов",
+    "Cur_OfficialRate": 3.1998
+  },
+  "CZK": {
+    "Cur_Scale": 100,
+    "Cur_Name": "Чешских крон",
+    "Cur_OfficialRate": 11.0693
+  },
+  "SEK": {
+    "Cur_Scale": 10,
+    "Cur_Name": "Шведских крон",
+    "Cur_OfficialRate": 2.8087
+  },
+  "CHF": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Швейцарский франк",
+    "Cur_OfficialRate": 2.681
+  }
+}
