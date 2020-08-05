@@ -12,4 +12,8 @@ class Calculator
             end
     { value: value, params: params }
   end
+
+  def self.foo
+    'STUBBED CLASS METHOD!'
+  end
 end

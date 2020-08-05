@@ -1,4 +1,5 @@
-require '~/rubycom/test/calculator'
+require '~/rubycom/Rubycom/_lesson7/calculator'
+require 'cucumber/rspec/doubles'
 
 puts "We're starting our test-cases!..."
 
