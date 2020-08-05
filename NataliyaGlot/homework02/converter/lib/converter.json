@@ -1,0 +1,11 @@
+{
+ "currency":
+[
+ {"cur_name":"EUR","cur_scale":1, "cur_rate": 2.8771
+ },
+ {"cur_name":"USD", "cur_scale":1, "cur_rate": 2.4475
+ },
+ {"cur_name":"RUB", "cur_scale":100, "cur_rate": 3.2997
+ }
+]
+}
