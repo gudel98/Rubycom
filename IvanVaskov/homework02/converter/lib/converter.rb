@@ -17,7 +17,7 @@ class Converter
     Money.rounding_mode = BigDecimal::ROUND_HALF_UP
   end
 
-  def convert_validator?(amount, currency_from, currency_to)
+  def get_violations(amount, currency_from, currency_to)
     conditions = [
       [(amount.is_a?Integer), "'amount' must be an 'Integer' type"],
       [amount > 0, "'amount' must be greater than zero"],
@@ -29,31 +29,28 @@ class Converter
       "Currency '#{currency_from.upcase}' not found"],
       [(currency_to.upcase == 'BYN') || @data.has_key?(currency_to.upcase),
       "Currency '#{currency_to.upcase}' not found"],
-    ]
-    check_conditions?(conditions)
+    ].select { |cond| !cond[0] }.map { |i| i[1] }
   end
 
   def convert(amount, currency_from, currency_to)
-    unless convert_validator?(amount, currency_from, currency_to)
-      method(__method__).parameters.each do |arg|
-        print "#{arg[1]}=#{eval(arg[1].to_s)}; "
-      end
+    violations = get_violations(amount, currency_from, currency_to)
+    if violations.size > 0
+      method(__method__).parameters.each { |arg| print "#{arg[1]} = #{eval(arg[1].to_s)}; " }
+      puts "\n" + violations.join("\n") + "\n"*2
       return
     end
-    begin
-      cur_from = currency_from.upcase
-      cur_to = currency_to.upcase
-      params_from = get_currency_params(cur_from)
-      params_to = get_currency_params(cur_to)
-      result = amount * (params_from[:rate] * params_to[:scale]) /
-        (params_to[:rate] * params_from[:scale])
-      money_from = Money.new(amount, cur_from)
-      money_to = Money.new(result, cur_to)
-      p format_convert(money_from, money_to)
-      [money_from, money_to]
-    rescue StandardError => error
-      p error.message
-    end
+    cur_from = currency_from.upcase
+    cur_to = currency_to.upcase
+    params_from = get_currency_params(cur_from)
+    params_to = get_currency_params(cur_to)
+    result = amount * (params_from[:rate] * params_to[:scale]) /
+      (params_to[:rate] * params_from[:scale])
+    money_from = Money.new(amount, cur_from)
+    money_to = Money.new(result, cur_to)
+    p format_convert(money_from, money_to)
+    [money_from, money_to]
+  rescue StandardError => error
+    p error.message
   end
 
   private
@@ -61,14 +58,6 @@ class Converter
   def format_convert(money_from, money_to)
     "#{ money_from.format } => #{ money_to.format } :" \
       "(#{money_from.currency.name} => #{money_to.currency.name})"
-  end
-
-  def check_conditions?(conditions)
-    result = []
-    conditions.each {|cnd| result << cnd[1] unless cnd[0] }
-    puts result.join("\n")
-    errors = result
-    result.size == 0
   end
 
   def get_currency_params(currency)
