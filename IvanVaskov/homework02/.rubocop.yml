@@ -2,4 +2,7 @@ AllCops:
   NewCops: enable
 
 Metrics/MethodLength:
-  Max: 25  
+  Max: 25
+
+Metrics/AbcSize:
+  Max: 32

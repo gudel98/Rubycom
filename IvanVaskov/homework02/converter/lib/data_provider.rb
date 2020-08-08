@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'csv'
 
+# It is abstract parent for the concrete class
 class AbstractData
   extend DataUtils
-  def self.get_data(source)
-    raise NotImplementedError,
-      "Class has not implemented method '#{__method__}'"
+  def self.get_data(_)
+    raise(NotImplementedError, "Class has not implemented method '#{__method__}'")
   end
 
   def self.error_handler(error)
@@ -14,17 +16,19 @@ class AbstractData
   end
 end
 
+# JSON class
 class JsonData < AbstractData
   def self.get_data(source)
     json = File.read(source)
     JSON.parse(json.to_s)
-  rescue Errno::ENOENT => error
-    error_handler(error)
-  rescue JSON::ParserError => error
-    error_handler(error)
+  rescue Errno::ENOENT => e
+    error_handler(e)
+  rescue JSON::ParserError => e
+    error_handler(e)
   end
 end
 
+# CSV class
 class CsvData < AbstractData
   def self.get_data(source)
     table = CSV.parse(File.read(source).to_s, headers: true)
@@ -37,13 +41,14 @@ class CsvData < AbstractData
       ]
     end
     result
-  rescue Errno::ENOENT => error
-    error_handler(error)
-  rescue CSV::MalformedCSVError => error
-    error_handler(error)
+  rescue Errno::ENOENT => e
+    error_handler(e)
+  rescue CSV::MalformedCSVError => e
+    error_handler(e)
   end
 end
 
+# Web API class
 class WebData < AbstractData
   def self.get_data(source)
     result = {}
@@ -51,17 +56,18 @@ class WebData < AbstractData
       result[ i['Cur_Abbreviation'] ] = {
         'Cur_Scale' => i['Cur_Scale'],
         'Cur_Name' => i['Cur_Name'],
-        'Cur_OfficialRate' => i['Cur_OfficialRate'],
+        'Cur_OfficialRate' => i['Cur_OfficialRate']
       }
     end
     result
-  rescue Errno::ENOENT => error
-    error_handler(error)
-  rescue JSON::ParserError => error
-    error_handler(error)
+  rescue Errno::ENOENT => e
+    error_handler(e)
+  rescue JSON::ParserError => e
+    error_handler(e)
   end
 end
 
+# It provides the suitable class by name
 class DataFactory
   def self.for(type)
     result = nil
@@ -69,12 +75,9 @@ class DataFactory
       raise ArgumentError, "Parameter 'type' must be a string" if type.class != String
 
       result = Object.const_get(type.capitalize + 'Data')
-
-    rescue NameError => error
+    rescue NameError
       p "Invalid parameter 'type' value. Available values: 'csv', 'json', 'web'" \
-        " (case insensitive)."
-    rescue => error
-      p error.message
+        ' (case insensitive).'
     ensure
       result
     end
