@@ -11,7 +11,7 @@ class AbstractData
   end
 
   def self.error_handler(error)
-    p 'Ooo, NO :( ' + error.message
+    p "Ooo, NO :(  + #{error.class} + ':' + #{error.message}"
     nil
   end
 end
@@ -21,9 +21,7 @@ class JsonData < AbstractData
   def self.get_data(source)
     json = File.read(source)
     JSON.parse(json.to_s)
-  rescue Errno::ENOENT => e
-    error_handler(e)
-  rescue JSON::ParserError => e
+  rescue Errno::ENOENT, JSON::ParserError => e
     error_handler(e)
   end
 end
@@ -41,9 +39,7 @@ class CsvData < AbstractData
       ]
     end
     result
-  rescue Errno::ENOENT => e
-    error_handler(e)
-  rescue CSV::MalformedCSVError => e
+  rescue Errno::ENOENT, CSV::MalformedCSVError => e
     error_handler(e)
   end
 end
@@ -60,9 +56,7 @@ class WebData < AbstractData
       }
     end
     result
-  rescue Errno::ENOENT => e
-    error_handler(e)
-  rescue JSON::ParserError => e
+  rescue ArgumentError, SocketError, Errno::ENOENT, JSON::ParserError => e
     error_handler(e)
   end
 end
@@ -70,16 +64,15 @@ end
 # It provides the suitable class by name
 class DataFactory
   def self.for(type)
-    result = nil
-    begin
-      raise ArgumentError, "Parameter 'type' must be a string" if type.class != String
+    raise ArgumentError, "Parameter 'type' must be a string" if type.class != String
 
-      result = Object.const_get(type.capitalize + 'Data')
-    rescue NameError
-      p "Invalid parameter 'type' value. Available values: 'csv', 'json', 'web'" \
-        ' (case insensitive).'
-    ensure
-      result
-    end
+    Object.const_get(type.capitalize + 'Data')
+  rescue ArgumentError => e
+    p e.message
+    nil
+  rescue NameError
+    p "Invalid parameter 'type' value. Available values: 'csv', 'json', 'web'" \
+      ' (case insensitive).'
+    nil
   end
 end

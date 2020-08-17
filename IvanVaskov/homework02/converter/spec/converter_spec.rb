@@ -3,7 +3,7 @@ require_relative './spec_helper.rb'
 describe Converter do
 
   before :all do
-    @data = JSON.parse(File.read('data.json').to_s)
+    @data = JSON.parse(File.read("#{__dir__}/data.json").to_s)
   end
 
   describe '#initialization' do
@@ -28,12 +28,22 @@ describe Converter do
       end
 
       it 'returns array with item types are Money' do
-        expect(subject.convert(10, 'BYN', 'USD')[0].class).to eq(Money)
+        expect(subject.convert(10, 'BYN', 'USD')[0]).to be_an_instance_of(Money)
       end
 
       it "returns two equals object if 'from' and 'to' currency are the same" do
         expect(subject.convert(1000, 'BYN', 'BYN')[0]).
           to eq(subject.convert(1000, 'BYN', 'BYN')[1])
+      end
+
+      it "returns correct values if 'from_currency = BYN'" do
+        expect(subject.convert(10, 'BYN', 'USD')).
+          to contain_exactly(Money.new(10, 'BYN'), Money.new(4, 'USD'))
+      end
+
+      it "returns correct values if 'scale > 1'" do
+        expect(subject.convert(10, 'USD', 'PLN')).
+          to contain_exactly(Money.new(10, 'USD'), Money.new(38, 'PLN'))
       end
     end
 

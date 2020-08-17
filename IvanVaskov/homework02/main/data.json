@@ -2,131 +2,131 @@
   "AUD": {
     "Cur_Scale": 1,
     "Cur_Name": "Австралийский доллар",
-    "Cur_OfficialRate": 1.7647
+    "Cur_OfficialRate": 1.7546
   },
   "BGN": {
     "Cur_Scale": 1,
     "Cur_Name": "Болгарский лев",
-    "Cur_OfficialRate": 1.4792
+    "Cur_OfficialRate": 1.481
   },
   "UAH": {
     "Cur_Scale": 100,
     "Cur_Name": "Гривен",
-    "Cur_OfficialRate": 8.8567
+    "Cur_OfficialRate": 8.98
   },
   "DKK": {
     "Cur_Scale": 10,
     "Cur_Name": "Датских крон",
-    "Cur_OfficialRate": 3.8835
+    "Cur_OfficialRate": 3.8899
   },
   "USD": {
     "Cur_Scale": 1,
     "Cur_Name": "Доллар США",
-    "Cur_OfficialRate": 2.4482
+    "Cur_OfficialRate": 2.4564
   },
   "EUR": {
     "Cur_Scale": 1,
     "Cur_Name": "Евро",
-    "Cur_OfficialRate": 2.8971
+    "Cur_OfficialRate": 2.9004
   },
   "PLN": {
     "Cur_Scale": 10,
     "Cur_Name": "Злотых",
-    "Cur_OfficialRate": 6.5577
+    "Cur_OfficialRate": 6.5875
   },
   "IRR": {
     "Cur_Scale": 100000,
     "Cur_Name": "Иранских риалов",
-    "Cur_OfficialRate": 5.829
+    "Cur_OfficialRate": 5.8486
   },
   "ISK": {
     "Cur_Scale": 100,
     "Cur_Name": "Исландских крон",
-    "Cur_OfficialRate": 1.8059
+    "Cur_OfficialRate": 1.7981
   },
   "JPY": {
     "Cur_Scale": 100,
     "Cur_Name": "Йен",
-    "Cur_OfficialRate": 2.3172
+    "Cur_OfficialRate": 2.3014
   },
   "CAD": {
     "Cur_Scale": 1,
     "Cur_Name": "Канадский доллар",
-    "Cur_OfficialRate": 1.8319
+    "Cur_OfficialRate": 1.8547
   },
   "CNY": {
     "Cur_Scale": 10,
     "Cur_Name": "Китайских юаней",
-    "Cur_OfficialRate": 3.519
+    "Cur_OfficialRate": 3.5328
   },
   "KWD": {
     "Cur_Scale": 1,
     "Cur_Name": "Кувейтский динар",
-    "Cur_OfficialRate": 8.0085
+    "Cur_OfficialRate": 8.0309
   },
   "MDL": {
     "Cur_Scale": 10,
     "Cur_Name": "Молдавских леев",
-    "Cur_OfficialRate": 1.4793
+    "Cur_OfficialRate": 1.4665
   },
   "NZD": {
     "Cur_Scale": 1,
     "Cur_Name": "Новозеландский доллар",
-    "Cur_OfficialRate": 1.6283
+    "Cur_OfficialRate": 1.6048
   },
   "NOK": {
     "Cur_Scale": 10,
     "Cur_Name": "Норвежских крон",
-    "Cur_OfficialRate": 2.7159
+    "Cur_OfficialRate": 2.748
   },
   "RUB": {
     "Cur_Scale": 100,
     "Cur_Name": "Российских рублей",
-    "Cur_OfficialRate": 3.3249
+    "Cur_OfficialRate": 3.3585
   },
   "XDR": {
     "Cur_Scale": 1,
     "Cur_Name": "СДР (Специальные права заимствования)",
-    "Cur_OfficialRate": 3.4589
+    "Cur_OfficialRate": 3.4662
   },
   "SGD": {
     "Cur_Scale": 1,
     "Cur_Name": "Сингапурcкий доллар",
-    "Cur_OfficialRate": 1.7854
+    "Cur_OfficialRate": 1.7889
   },
   "KGS": {
     "Cur_Scale": 100,
     "Cur_Name": "Сомов",
-    "Cur_OfficialRate": 3.1733
+    "Cur_OfficialRate": 3.1573
   },
   "KZT": {
     "Cur_Scale": 1000,
     "Cur_Name": "Тенге",
-    "Cur_OfficialRate": 5.83
+    "Cur_OfficialRate": 5.8523
   },
   "TRY": {
     "Cur_Scale": 10,
     "Cur_Name": "Турецких лир",
-    "Cur_OfficialRate": 3.3372
+    "Cur_OfficialRate": 3.3301
   },
   "GBP": {
     "Cur_Scale": 1,
     "Cur_Name": "Фунт стерлингов",
-    "Cur_OfficialRate": 3.2049
+    "Cur_OfficialRate": 3.2117
   },
   "CZK": {
     "Cur_Scale": 100,
     "Cur_Name": "Чешских крон",
-    "Cur_OfficialRate": 11.0036
+    "Cur_OfficialRate": 11.0949
   },
   "SEK": {
     "Cur_Scale": 10,
     "Cur_Name": "Шведских крон",
-    "Cur_OfficialRate": 2.8056
+    "Cur_OfficialRate": 2.8169
   },
   "CHF": {
     "Cur_Scale": 1,
     "Cur_Name": "Швейцарский франк",
-    "Cur_OfficialRate": 2.6788
+    "Cur_OfficialRate": 2.694
   }
 }

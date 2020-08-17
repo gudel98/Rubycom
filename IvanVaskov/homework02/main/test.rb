@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'converter'
+require 'pry'
 
 SOURCE_TYPES = %w[web json csv].freeze
 

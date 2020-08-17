@@ -3,56 +3,21 @@ require_relative '../lib/data_provider.rb'
 require_relative '../lib/data_utils.rb'
 
 require 'rspec'
+require 'webmock/rspec'
+require 'json'
 
-=begin
-RSpec.describe 'Calculator' do
-  describe '.sum' do
-    it 'returns sum of two elements' do
-      sum = Calculator.new.sum([1, 2])
-      expect(sum).to eq(3)
-    end
+shared_context 'shared stub data', :a => :b do
+  before do
+    @stub_raw_data = [
+      {"Cur_Abbreviation"=>"USD","Cur_Scale"=>1,"Cur_Name"=>"Доллар США","Cur_OfficialRate"=>2.3898},
+      {"Cur_Abbreviation"=>"EUR","Cur_Scale"=>1,"Cur_Name"=>"Евро","Cur_OfficialRate"=>2.7711},
+      {"Cur_Abbreviation"=>"PLN","Cur_Scale"=>10,"Cur_Name"=>"Злотых","Cur_OfficialRate"=>6.2861}
+    ]
+
+    @stub_data = {
+      "USD"=>{"Cur_Scale"=>1,"Cur_Name"=>"Доллар США","Cur_OfficialRate"=>2.3898},
+      "EUR"=>{"Cur_Scale"=>1,"Cur_Name"=>"Евро","Cur_OfficialRate"=>2.7711},
+      "PLN"=>{"Cur_Scale"=>10,"Cur_Name"=>"Злотых","Cur_OfficialRate"=>6.2861}
+    }
   end
-
-  describe '.mult' do
-    let!(:params) { [2, 5] }
-
-    subject(:result) { Calculator.new.mult(params) }
-
-    it 'returns mult of two elements' do
-      expect(result[:value]).to eq(10)
-    end
-
-    it 'returns two input elements' do
-      expect(result[:params].first).to eq(2)
-      expect(result[:params].last).to eq(5)
-    end
-
-    context 'when third parameter present' do
-      before { params << 4 }
-
-      it 'returns mult of three elements' do
-        expect(result[:value]).to eq(40)
-      end
-
-      it 'returns three input elements' do
-        expect(result[:params]).to eq([2, 5, 4])
-      end
-    end
-
-    context 'when params nil' do
-      subject(:result) { Calculator.new.mult }
-
-      it 'returns mult of three elements' do
-        expect(result).to be_nil
-      end
-    end
-
-    context 'with string params' do
-      let(:params) { ['1', '3', '5', '7'] }
-
-      it 'returns mult of input params' do
-        expect(result[:value]).to eq(105)
-      end
-    end
-  end
-=end
+end
