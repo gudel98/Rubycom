@@ -66,25 +66,35 @@ describe WebData do
 end
 
 describe JsonData do
+  include_context 'shared stub data'
+
   it 'returns nil for invalid file path' do
     expect(subject.class.get_data('/eee.json')).to eq(nil)
   end
 
-  xit 'returns nil for invalid JSON data' do
-    expect(subject.class.get_data('http://nbrb.by')).to eq(nil)
+  it 'returns nil for invalid JSON data' do
+    expect(subject.class.get_data("#{__dir__}/invalid.txt")).to eq(nil)
   end
 
-  xit "checks main scenario with valid 'in data source'" do
-    stub_request(:get, 'http://nbrb.by').
-      to_return(status: 200, body: @stub_raw_data.to_json,
-        headers: {
-          'Content-Type'=>'application/json; charset=utf-8',
-        })
-    expect(subject.class.get_data('http://nbrb.by')).
+  it "checks main scenario with valid 'in data source'" do
+    expect(subject.class.get_data("#{__dir__}/data.json")).
       to eq(@stub_data)
   end
 end
 
 describe CsvData do
+  include_context 'shared stub data'
 
+  it 'returns nil for invalid file path' do
+    expect(subject.class.get_data('/eee.csv')).to eq(nil)
+  end
+
+  it 'returns nil for invalid CSV data' do
+    expect(subject.class.get_data("#{__dir__}/invalid.txt")).to eq(nil)
+  end
+
+  it "checks main scenario with valid 'in data source'" do
+    expect(subject.class.get_data("#{__dir__}/data.csv")).
+      to eq(@stub_data)
+  end
 end

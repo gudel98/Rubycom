@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
+require 'open-uri'
+require 'net/http'
+require 'json'
+require 'csv'
+
 # Data manipulation utilities
 module DataUtils
-  require 'open-uri'
-  require 'net/http'
-  require 'json'
-  require 'csv'
-
   private
 
   def get_raw_json(source)
