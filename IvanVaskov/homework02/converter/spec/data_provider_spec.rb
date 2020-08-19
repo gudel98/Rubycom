@@ -6,11 +6,11 @@ describe DataFactory do
       expect(DataFactory.for('web')).to eq(WebData)
     end
 
-    it "returns correct class by 'web' parameter" do
+    it "returns correct class by 'json' parameter" do
       expect(DataFactory.for('json')).to eq(JsonData)
     end
 
-    it "returns correct class by 'web' parameter" do
+    it "returns correct class by 'csv' parameter" do
       expect(DataFactory.for('csv')).to eq(CsvData)
     end
   end
