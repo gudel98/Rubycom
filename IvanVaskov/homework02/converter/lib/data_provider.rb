@@ -5,7 +5,6 @@ require 'csv'
 
 # It is abstract parent for the concrete class
 class AbstractData
-  extend DataUtils
   def self.get_data(_)
     raise(NotImplementedError, "Class has not implemented method '#{__method__}'")
   end
@@ -48,7 +47,7 @@ end
 class WebData < AbstractData
   def self.get_data(source)
     result = {}
-    get_raw_json(source).each do |i|
+    DataUtils.get_raw_json(source).each do |i|
       result[ i['Cur_Abbreviation'] ] = {
         'Cur_Scale' => i['Cur_Scale'],
         'Cur_Name' => i['Cur_Name'],

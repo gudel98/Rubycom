@@ -7,21 +7,19 @@ require 'csv'
 
 # Data manipulation utilities
 module DataUtils
-  private
-
-  def get_raw_json(source)
+  def self.get_raw_json(source)
     json = URI.open(source).read
     # json = Net::HTTP.get(URI(source))
     JSON.parse(json.to_s)
   end
 
-  def hash_to_json_file(hash, path)
+  def self.hash_to_json_file(hash, path)
     File.open("#{path}/data.json", 'w') do |f|
       f.write(JSON.pretty_generate(hash))
     end
   end
 
-  def raw_json_to_csv_file(raw_json, path)
+  def self.raw_json_to_csv_file(raw_json, path)
     CSV.open("#{path}/data.csv", 'wb') do |csv|
       csv << %w[Cur_Abbreviation Cur_Scale Cur_Name Cur_OfficialRate]
       raw_json.each do |elem|
