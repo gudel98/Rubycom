@@ -15,12 +15,16 @@ describe DataUtils do
   end
 
   it 'checks writing hash to the JSON file' do
+    path = "#{__dir__}/data.json"
+    File.delete(path) if File.exist?(path)
     subject.hash_to_json_file(@stub_data, __dir__)
-    expect(File).to exist("#{__dir__}/data.json")
+    expect(File).to exist(path)
   end
 
-  it 'checks writing json data to the CSV file' do
+  it 'checks writing JSON data to the CSV file' do
+    path = "#{__dir__}/data.csv"
+    File.delete(path) if File.exist?(path)
     subject.raw_json_to_csv_file(@stub_raw_data, __dir__)
-    expect(File).to exist("#{__dir__}/data.csv")
+    expect(File).to exist(path)
   end
 end
