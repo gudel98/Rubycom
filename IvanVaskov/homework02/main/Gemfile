@@ -1,0 +1,11 @@
+# frozen_string_literal: true
+
+gem 'converter', path: '../converter'
+
+source 'https://rubygems.org' do
+  gem 'money', '>= 6.13.6'
+  gem 'pry'
+  gem 'rspec'
+  gem 'webmock'
+  gem 'cucumber'
+end

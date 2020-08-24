@@ -1,0 +1,17 @@
+{
+  "USD": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Доллар США",
+    "Cur_OfficialRate": 2.3898
+  },
+  "EUR": {
+    "Cur_Scale": 1,
+    "Cur_Name": "Евро",
+    "Cur_OfficialRate": 2.7711
+  },
+  "PLN": {
+    "Cur_Scale": 10,
+    "Cur_Name": "Злотых",
+    "Cur_OfficialRate": 6.2861
+  }
+}
