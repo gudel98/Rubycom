@@ -47,6 +47,8 @@ class Converter
       (@num_conv.to_i * @cur_rate_eur / @cur_rate_usd).round(2)
     elsif cur_name == 'RUS'
       (@num_conv.to_i / @cur_scale_rus * @cur_rate_rus / @cur_rate_usd).round(2)
+    else
+      'Currency not found'
     end
   end
 
@@ -75,9 +77,17 @@ class Converter
   end
 
   def self.convert(num_conv, cur_from, cur_to)
-    current_path = File.dirname(__FILE__)
-    file_path = File.read(current_path + '/converter.json')
+    begin
+      current_path = File.dirname(__FILE__)
+      file_path = File.read(current_path + '/converter.json')
+    rescue StandardError
+      puts 'File not found or damaged'
+    end
     @file_hash = JSON.parse(file_path)
+    @cur_rate_eur = @file_hash['currency'][0]['cur_rate']
+    @cur_rate_usd = @file_hash['currency'][1]['cur_rate']
+    @cur_scale_rus = @file_hash['currency'][2]['cur_scale']
+    @cur_rate_rus = @file_hash['currency'][2]['cur_rate']
     @num_conv = num_conv
     @cur_from = cur_from
     @cur_to = cur_to
@@ -99,4 +109,3 @@ class Converter
     end
   end
 end
-
