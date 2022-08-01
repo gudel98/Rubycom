@@ -1,0 +1,9 @@
+source 'https://rubygems.org' do
+  gem 'colorize'
+  gem 'converter', path: '../converter'
+  gem 'cucumber'
+  gem 'money'
+  gem 'pry'
+  gem 'rspec'
+  gem 'rubocop', require: false
+end
